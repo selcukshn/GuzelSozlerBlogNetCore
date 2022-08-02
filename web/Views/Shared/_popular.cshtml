@@ -1,0 +1,22 @@
+<div class="section-title px-0">
+    <h2>
+        <span>Popüler kategoriler</span>
+    </h2>
+</div>
+<ul class="side-list">
+    @foreach (var category in ViewBag.Popular)
+    {
+        <li class="side-list-item">
+            <a href="/@category.CategoryUrl" class="w-100 clearfix">
+                <div class="side-list-img w-25 float-start">
+                    <img src="~/images/category/@category.CategoryImg" alt="">
+                </div>
+                <div class="side-list-info w-75 float-start ps-2">
+                    <h2 class="side-list-title">@category.CategoryName</h2>
+                    <p class="side-list-text"></p>
+                </div>
+            </a>
+        </li>
+    }
+    <a asp-controller="home" asp-action="popular" class="more-btn mt-2">Devamını gör</a>
+</ul>

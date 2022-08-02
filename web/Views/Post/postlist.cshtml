@@ -1,0 +1,39 @@
+@model PostListViewModel
+@{
+    var Category = Model.Category;
+    var Posts = Model.Posts;
+    ViewData["Title"] = Category.CategoryName;
+}
+
+<section class="col-12 m-0 text-center p-5 ">
+    <h1 class="fw-light">@Category.CategoryName</h1>
+</section>
+<section class="col-12 bg-white py-3">
+    <div class="album">
+        <div class="row row-cols-4 g-3">
+            @foreach (var post in Posts)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <a href="/@Category.CategoryUrl/@post.PostUrl">
+                            <img src="~/images/post/@post.PostImg" class="card-img-top">
+                        </a>
+                        <div class="card-body text-black">
+                            <h6 class="card-title fw-bold">@post.PostTitle</h6>
+                            <p class="card-text">
+                                <small>
+                                    @(post.PostSummary.Count()>100?post.PostSummary.Substring(0,100)+"...":post.PostSummary)
+                                </small>
+                            </p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <small class="text-muted"><i class="fa-solid fa-eye"></i> @post.ClickCount</small>
+                            <small class="text-muted">@post.PostDate.ToString("dd MMMM yyyy")</small>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+</section>

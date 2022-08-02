@@ -1,0 +1,109 @@
+@model CommentsModel
+<h3 class="mb-3">Yorumlar</h3>
+<partial name="_alert">
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div id="commentForm" class="mb-5 row gy-3">
+            <input asp-for="PostId" type="hidden">
+            <input asp-for="UserId" type="hidden">
+            <div class="col-6">
+                <label asp-for="FirstName" class="form-label"></label>
+                <input asp-for="FirstName" class="form-control" readonly>
+            </div>
+            <div class="col-6">
+                <label asp-for="LastName" class="form-label"></label>
+                <input asp-for="LastName" class="form-control" readonly>
+            </div>
+            <div class="col-6">
+                <label asp-for="UserName" class="form-label"></label>
+                <input asp-for="UserName" class="form-control" readonly>
+            </div>
+            <div class="col-6">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" readonly>
+            </div>
+            <div class="col-12">
+                <textarea asp-for="Comment" rows="5" class="form-control" placeholder="Yorumunuz..."></textarea>
+                <div class="form-text">Maksimum 500 karakter</div>
+                <span asp-validation-for="Comment" class="text-danger"></span>
+            </div>
+            <div class="col-12">
+                <button id="addComment" type="button" class="btn btn-primary">Yorum yap</button>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning" role="alert">Yorum yapabilmek için giriş yapmalısınız. <a asp-controller="account"
+            asp-action="login" asp-route-returnurl="@ViewBag.Controller/@ViewBag.Action" class="alert-link d-inline">Giriş
+                Yap</a></div>
+        <div class="mb-5">
+            <div class="mb-3">
+                <input id="name" type="text" class="form-control" placeholder="İsminiz" disabled>
+            </div>
+            <div class="mb-3">
+                <textarea name="comment" id="comment" rows="5" class="form-control" placeholder="Yorumunuz..."
+                disabled></textarea>
+            </div>
+            <div>
+                <button type="button" class="btn btn-secondary w-25" disabled>Gönder</button>
+            </div>
+        </div>
+    }
+    <hr>
+    @if(Model.CommentViewModel==null||Model.CommentViewModel.Count()==0)
+    {
+        <div class="alert alert-primary"><i class="fa-solid fa-circle-exclamation fa-xl me-2"></i>Bu sayfaya henüz yorum yapılmamış</div>
+    }else{
+        <div class="comment-list row row-cols-1 g-0">
+        @foreach (var comment in Model.CommentViewModel)
+            {
+                <div class="col">
+                    <div class="row g-0">
+                        <div class="col-1">
+                            <img src="~/images/user.jpg" alt="">
+                        </div>
+                        <div class="col-11">
+                            <div class="row row-cols-1">
+                                <div class="col fw-bolder">@comment.User.FirstName @comment.User.LastName</div>
+                                <small class="col text-muted">@@@comment.User.UserName</small>
+                                <div class="col mt-1">
+                                    <p class="text-break">@comment.Text</p>
+                                    </div>
+                                <div class="col text-muted"><small class="float-end">@comment.CommentDate.ToString("dd MMMM yyyy")</small>
+                                </div>
+                                <div class="col mb-3">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm btn-reply">Cevapla</button>
+                                    <div id="replyForm">
+                                        <input id="CommentId" type="hidden" name="CommentId" value="@comment.CommentId">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    @foreach (var reply in comment.ReplyViewModel)
+                                    {
+                                        <div class="row g-0">
+                                            <div class="col-1">
+                                                <img src="~/images/user.jpg" alt="">
+                                            </div>
+                                            <div class="col-11">
+                                                <div class="row row-cols-1">
+                                                    <div class="col fw-bolder">@reply.User.FirstName @reply.User.LastName</div>
+                                                    <small class="col text-muted">@@@reply.User.UserName</small>
+                                                    <div class="col mt-1">@reply.Replies.Text</div>
+                                                    <div class="col text-muted"><small class="float-end">@reply.Replies.ReplyDate.ToString("dd MMMM yyyy")</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            }
+             </div>
+    }
+   

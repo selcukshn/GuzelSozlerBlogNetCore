@@ -1,0 +1,82 @@
+@{
+    string action = "";
+    if (ViewBag.Action != null)
+    {
+        action = ViewBag.Action;
+    }
+}
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+    <a href="#" class="brand-link">
+        <img src="" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Logo</span>
+    </a>
+
+    <div class="sidebar">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="~/AdminPanel/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">User</a>
+            </div>
+        </div>
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Tablolar -->
+                <li class="nav-item">
+                    <a asp-controller="admin" asp-action="categorylist"
+                        class="nav-link @(action.Contains("categor")?"active":"")">
+                        <i class="fas fa-table nav-icon"></i>
+                        <p>Kategoriler</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="admin" asp-action="postlist"
+                        class="nav-link @(action.Contains("post")?"active":"")">
+                        <i class="fas fa-table nav-icon"></i>
+                        <p>Postlar</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="admin" asp-action="rolelist"
+                        class="nav-link @(action.Contains("role")?"active":"")">
+                        <i class="fas fa-table nav-icon"></i>
+                        <p>Roller</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="admin" asp-action="userlist"
+                        class="nav-link @(action.Contains("user")?"active":"")">
+                        <i class="fas fa-table nav-icon"></i>
+                        <p>Kullanıcılar</p>
+                    </a>
+                </li>
+                @* ----------- Dropdown --------------------
+                    <li class="nav-item menu-is-opening menu-open">
+                    <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-table"></i>
+                    <p>
+                    Tablolar
+                    <i class="fas fa-angle-left right"></i>
+                    </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="display: block;">
+                    <li class="nav-item">
+                    <a asp-controller="admin" asp-action="categorylist" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Kategoriler</p>
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a asp-controller="admin" asp-action="postlist" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Postlar</p>
+                    </a>
+                    </li>
+                    </ul>
+                    </li> *@
+            </ul>
+        </nav>
+    </div>
+</aside>

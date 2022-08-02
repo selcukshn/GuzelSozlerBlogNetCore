@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] | GüzelSözSite</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/8fdb1aed08.js" crossorigin="anonymous"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <!-- Site css -->
+    <link rel="stylesheet" href="~/css/style.css" />
+    @await RenderSectionAsync("Css",false)
+</head>
+
+<body>
+
+    <header class="row">
+        @* @await Html.PartialAsync("_logo") *@
+        @await Component.InvokeAsync("Navbar")
+        @await Html.PartialAsync("_headerbottom")
+    </header>
+
+
+    @if (IsSectionDefined("side"))
+    {
+        <div class="container bg-white">
+            <div class="content row">
+                <main class="col-9">
+
+                    <section class="w-100 my-3">
+                        @await Html.PartialAsync("_breadcrumb")
+                    </section>
+
+                    <section id="post" class="w-100 row">
+                        @RenderBody()
+                    </section>
+                    <section id="related-post" class="w-100">
+                        @await Html.PartialAsync("_related")
+                    </section>
+                    <section id="commentarea" class="w-100">
+                        @await Component.InvokeAsync("Comments")
+                    </section>
+                </main>
+
+                <aside class="col-3">
+                    @RenderSection("side")
+                </aside>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="container">
+            <main class="content row">
+                @RenderBody()
+            </main>
+        </div>
+
+    }
+    <footer class="w-100 bg-dark text-white clearfix">
+        <div class="w-33 float-start p-3">s</div>
+        <div class="w-33 float-start p-3">s</div>
+        <div class="w-33 float-start p-3">s</div>
+        <div class="copyright w-100 px-5 py-3 float-start">
+            <p>
+                Copyright © 2022 Selçuk Şahin
+            </p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    @* <script type="text/javascript" src="script.js"></script> *@
+</body>
+
+</html>

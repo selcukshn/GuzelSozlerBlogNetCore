@@ -1,0 +1,68 @@
+@model List<UserItemModel>
+@{
+    Layout = "_layoutadmin";
+    ViewData["PageTitle"] = "Kullanıcı listesi";
+}
+
+<div class="col-12">
+    <partial name="_alertV4">
+        <div class="card">
+            <div class="card-body">
+                <table id="userDataTable" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Ad</th>
+                            <th>Soyad</th>
+                            <th>Kullanıcı adı</th>
+                            <th>E-posta</th>
+                            <th>Durum</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td>@user.User.FirstName</td>
+                                <td>@user.User.LastName</td>
+                                <td>@user.User.UserName</td>
+                                <td>@user.User.Email</td>
+                                <td>
+                                    @if (user.User.EmailConfirmed)
+                                    {
+                                        <span class="badge badge-success">Onaylanmış</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-danger">Onaylanmamış</span>
+                                    }
+                                    @* @(user.EmailConfirmed?"Onaylanmış":"Onaylanmamış") *@
+                                </td>
+                                <td style="width: 200px;">
+                                    <div class="row row-cols-2">
+                                        <div class="col"> <a asp-controller="admin" asp-action="useredit"
+                                            asp-route-userid="@user.User.Id"
+                                            class="btn btn-warning btn-sm w-100">Düzenle</a>
+                                        </div>
+                                        <div class="col">
+                                            <form asp-controller="admin" asp-action="userdelete" method="POST">
+                                                <input name="Id" value="@user.User.Id" type="hidden">
+                                                <button type="submit" class="btn btn-danger btn-sm w-100">Sil</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</div>
+@section Scripts {
+<script>
+    $(document).ready(function () {
+        $('#userDataTable').DataTable();
+    });
+</script>
+}

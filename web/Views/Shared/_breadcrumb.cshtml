@@ -1,0 +1,16 @@
+@model PostDetailViewModel
+<ol class="breadcrumb px-3 py-1">
+    <li class="breadcrumb-item">
+        <a href="/">Anasayfa</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a asp-controller="home" asp-action="category">Kategoriler</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a asp-controller="post" asp-action="postlist"
+            asp-route-categoryurl="@Model.Category.CategoryUrl">@Model.Category.CategoryName</a>
+    </li>
+    <li class="breadcrumb-item active">
+        <a>@Model.Post.PostTitle</a>
+    </li>
+</ol>

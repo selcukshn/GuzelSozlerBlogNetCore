@@ -1,0 +1,71 @@
+@model RegisterModel
+@{
+    ViewData["Title"] = "Kayıt ol";
+}
+<section class="col-12 m-0 text-center py-5">
+    <h1 class="fw-light">Kayıt ol</h1>
+</section>
+<section class="col-12 bg-white py-5">
+    <partial name="_alert">
+        <form asp-controller="account" asp-action="register" method="post" class="w-33 m-auto">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <div class="input-group">
+                    <input asp-for="FirstName" class="form-control">
+                    <span class="input-group-text"><i class="fa-solid fa-pen-to-square"></i></span>
+                </div>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <div class="input-group">
+                    <input asp-for="LastName" class="form-control">
+                    <span class="input-group-text"><i class="fa-solid fa-pen-to-square"></i><span>
+                </div>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <div class="input-group">
+                    <input asp-for="Username" class="form-control">
+                    <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                </div>
+                <div class="form-text">Minimum 5 karakter</div>
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <div class="input-group">
+                    <input asp-for="Email" class="form-control">
+                    <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                </div>
+                <div class="form-text">E-posta adresinize onay bağlantısı gönderilecek</div>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <div class="input-group">
+                    <input asp-for="Password" class="form-control">
+                    <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                </div>
+                <div class="form-text">Minimum 6 karakter</div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <div class="input-group">
+                    <input asp-for="RePassword" class="form-control">
+                    <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                </div>
+                <div class="form-text">Minimum 6 karakter</div>
+                <span asp-validation-for="RePassword" class="text-danger"></span>
+            </div>
+            <div class="d-grid mb-3">
+                <button type="submit" class="btn btn-primary">Kayıt ol</button>
+            </div>
+            <div>
+                Hesabınız var mı?
+                <a asp-controller="account" asp-action="login" class="link-primary d-inline"><u>Giriş yap</u></a>
+            </div>
+        </form>
+</section>
+
+@section Scripts{
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

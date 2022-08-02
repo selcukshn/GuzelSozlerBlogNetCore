@@ -1,0 +1,46 @@
+@model List<Category>
+<nav class="header-nav bg-dark col-12 px-0">
+    <div class="container d-flex">
+        <ul class="nav me-auto">
+            <li class="nav-item">
+                <a href="/" class="nav-link px-2 py-1"><i class="fas fa-home"></i></a>
+            </li>
+            <li class="nav-item header-nav-dropdown">
+                <a asp-controller="home" asp-action="category" class="nav-link">Kategoriler<i
+                        class="fas fa-chevron-down ms-2"></i></a>
+                <ul class="header-nav-dropdown-menu text-center bg-dark">
+                    @foreach (var category in Model)
+                    {
+                        <li>
+                            <a asp-controller="post" asp-action="postlist"
+                            asp-route-categoryurl="@category.CategoryUrl">@category.CategoryName</a>
+                        </li>
+                    }
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="admin" asp-action="index" class="nav-link" target="_blank">Admin</a>
+            </li>
+        </ul>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="p-2 text-white my-auto">
+                @User.Identity.Name
+            </div>
+            <div class="p-2">
+                <a asp-controller="account" asp-action="logout" class="btn btn-danger">Çıkış yap</a>
+            </div>
+        }
+        else
+        {
+            <div class="p-2">
+                <a asp-controller="account" asp-action="login" class="btn btn-outline-light">Giriş yap</a>
+            </div>
+            <div class="p-2">
+                <a asp-controller="account" asp-action="register" class="btn btn-outline-warning">Kayıt ol</a>
+            </div>
+        }
+
+
+    </div>
+</nav>

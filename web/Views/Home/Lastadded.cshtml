@@ -1,0 +1,40 @@
+@model List<Post>
+@{
+    ViewData["Title"] = "Son eklenenler";
+}
+
+<section class="col-12 m-0 text-center p-5 ">
+    <h1 class="fw-light">Son eklenenler</h1>
+</section>
+<section class="col-12 bg-white py-3">
+    <div class="album">
+        <div class="row row-cols-4 g-3">
+            @foreach (var post in Model)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <a href="/@post.Category.CategoryUrl/@post.PostUrl">
+                            <img src="~/images/post/@post.PostImg" class="card-img-top">
+                        </a>
+                        <div class="card-body text-black">
+                            <h6 class="card-title fw-bold">@post.PostTitle</h6>
+                            <p class="card-text">
+                                <small>
+                                    @(post.PostSummary.Count()>100?post.PostSummary.Substring(0,100)+"...":post.PostSummary)
+                                </small>
+                            </p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <a asp-controller="post" asp-action="postlist"
+                            asp-route-categoryurl="@post.Category.CategoryUrl" class="d-inline">
+                                <small>@post.Category.CategoryName</small>
+                            </a>
+                            <small class="text-muted">@post.PostDate.ToString("dd MMMM yyyy")</small>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,67 @@
+@model List<Post>
+@{
+    Layout = "_LayoutAdmin";
+    ViewData["PageTitle"] = "Post listesi";
+}
+<div class="col-12">
+    <partial name="_alertV4">
+        <div class="card">
+            <div class="card-header">
+                <a asp-controller="admin" asp-action="postcreate" class="btn btn-primary">Ekle</a>
+            </div>
+            <div class="card-body">
+                <table id="postDataTable" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Resim</th>
+                            <th>Başlık</th>
+                            <th>Özet</th>
+                            <th>Eklenme Tarihi</th>
+                            <th>Ekleyen</th>
+                            <th>Url</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var post in Model)
+                        {
+                            <tr>
+                                <td>@post.PostId</td>
+                                <td style="width: 100px;">
+                                    <img src="~/images/post/@post.PostImg" class="img-fluid">
+                                </td>
+                                <td>@post.PostTitle</td>
+                                <td>@(post.PostSummary.Length>100?post.PostSummary.Substring(0,100):post.PostSummary)</td>
+                                <td>@post.PostDate</td>
+                                <td>@post.AddedBy</td>
+                                <td>@post.PostUrl</td>
+                                <td style="width: 200px;">
+                                    <div class="row row-cols-2">
+                                        <div class="col">
+                                            <a asp-controller="admin" asp-action="postedit" asp-route-postid="@post.PostId"
+                                            class="btn btn-warning w-100 btn-sm">Düzenle</a>
+                                        </div>
+                                        <div class="col">
+                                            <form asp-controller="admin" asp-action="postdelete" method="POST">
+                                                <input name="PostId" value="@post.PostId" type="hidden">
+                                                <button type="submit" class="btn btn-danger w-100 btn-sm">Sil</button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</div>
+@section Scripts {
+<script>
+    $(document).ready(function () {
+        $('#postDataTable').DataTable();
+    });
+</script>
+}

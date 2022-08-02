@@ -1,0 +1,123 @@
+@model PostEditCreateModel
+@{
+    Layout = "_LayoutAdmin";
+}
+<div class="col-12">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Post Düzenle</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form asp-controller="admin" asp-action="postedit" method="POST" class="form-horizontal"
+            enctype="multipart/form-data">
+            <input name="PostId" value="@Model.PostId" type="hidden">
+            <div class="card-header">
+                <a asp-controller="admin" asp-action="categoryedit" asp-route-CategoryId="@Model.CategoryId"
+                    class="btn btn-default btn-float float-right">Bu kaydın kategorisine git</a>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-10 pr-5">
+                        <div class="form-group row">
+                            <label asp-for="PostTitle" class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-10">
+                                <input asp-for="PostTitle" class="form-control">
+                                <span asp-validation-for="PostTitle" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="PostImg" class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-2">
+                                <img src="~/images/post/@Model.PostImg" class="img-fluid">
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Mevcut resim</label>
+                                    <div class="col-10">
+                                        <input asp-for="PostImg" type="text" class="form-control" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Yeni resim</label>
+                                    <div class="col-10">
+                                        <input name="file" type="file" class="w-100 bg-gray p-1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="PostSummary" class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-10">
+                                <textarea asp-for="PostSummary" class="form-control" rows="5"></textarea>
+                                <span asp-validation-for="PostSummary" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="AddedBy" class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-10">
+                                <input asp-for="AddedBy" class="form-control">
+                                <span asp-validation-for="AddedBy" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="PostUrl" class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-10">
+                                <input asp-for="PostUrl" class="form-control" readonly>
+                                <span asp-validation-for="PostUrl" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="PostContent" class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-10">
+                                <textarea asp-for="PostContent" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <h5>Kategori seç</h5>
+                        <hr class="mb-2">
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        <div class="form-group pt-2">
+                            @foreach (var category in ViewBag.Categories)
+                            {
+                                @if (category.CategoryId == Model.CategoryId)
+                                {
+                                    <div class="custom-control custom-radio">
+                                        <input name="CategoryId" value="@category.CategoryId" class="custom-control-input"
+                                    type="radio" id="radio_@category.CategoryId" checked>
+                                        <label for="radio_@category.CategoryId"
+                                    class="custom-control-label">@category.CategoryName</label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-radio">
+                                        <input name="CategoryId" value="@category.CategoryId" class="custom-control-input"
+                                    type="radio" id="radio_@category.CategoryId">
+                                        <label for="radio_@category.CategoryId"
+                                    class="custom-control-label">@category.CategoryName</label>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-success">Kaydet</button>
+                <a asp-controller="admin" asp-action="postlist" class="btn btn-danger">İptal</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts{
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('PostContent');
+</script>
+<script src="~/js/urlconvert.js"></script>
+}

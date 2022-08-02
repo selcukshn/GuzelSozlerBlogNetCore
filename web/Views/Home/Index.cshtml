@@ -1,0 +1,350 @@
+﻿@model HomeViewModel
+@{
+    ViewData["Title"] = "Anasayfa";
+}
+<div class="col-12 p-0 bg-white">
+    <partial name="_alert">
+        <div class="row">
+            <section id="best-categories" class="col-12">
+                <div class="section-title">
+                    <h2>
+                        <span>Son zamanlarda popüler</span>
+                    </h2>
+                </div>
+                <div class="row row-cols-3 g-3">
+                    <div class="col categories-container">
+                        <a href="#">
+                            <img src="~/images/yilbasi1.jpg" alt="">
+                            <div class="categories-title">
+                                <h3>Title</h3>
+                            </div>
+                            <div class="best-categories-badge">
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col categories-container">
+                        <a href="#">
+                            <img src="~/images/yilbasi2.jpg" alt="">
+                            <div class="categories-title">
+                                <h3>Title</h3>
+                            </div>
+                            <div class="best-categories-badge">
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col categories-container">
+                        <a href="#">
+                            <img src="~/images/yilbasi1.jpg" alt="">
+                            <div class="categories-title">
+                                <h3>Title</h3>
+                            </div>
+                            <div class="best-categories-badge">
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- <div class="w-100 clearfix">
+                        <div class="w-50 px-3 float-start categories-container">
+                            <a href="#">
+                                <img src="images/yilbasi1.jpg" alt="">
+                                <div class="categories-title">
+                                    <h3>Title</h3>
+                                </div>
+                                <div class="best-categories-badge">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="w-50 px-3 float-start categories-container">
+                            <a href="#">
+                                <img src=" images/yilbasi2.jpg" alt="">
+                                <div class="categories-title">
+                                    <h3>Title</h3>
+                                </div>
+                                <div class="best-categories-badge">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div> -->
+            </section>
+            <section id="top-likes" class="col-12">
+                <div class="section-title">
+                    <h2>
+                        <span>En çok beğenilenler</span>
+                    </h2>
+                </div>
+                <div class="row row-cols-4 g-3">
+                    <div class="col categories-container">
+                        <a href="#">
+                            <img src="https://picsum.photos/600/300" alt="">
+                            <div class="categories-title d-flex justify-content-between align-items-center">
+                                <span>Title</span>
+                                <span><small>15<i class="fa-solid fa-thumbs-up ms-2"></i></small></span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col categories-container">
+                        <a href="#">
+                            <img src="https://picsum.photos/600/300" alt="">
+                            <div class="categories-title">Title</div>
+                        </a>
+                    </div>
+                    <div class="col categories-container">
+                        <a href="#">
+                            <img src="https://picsum.photos/600/300" alt="">
+                            <div class="categories-title">Title</div>
+                        </a>
+                    </div>
+                    <div class="col categories-container">
+                        <a href="#">
+                            <img src="https://picsum.photos/600/300" alt="">
+                            <div class="categories-title">Title</div>
+                        </a>
+                    </div>
+                    <div class="col categories-container">
+                        <a href="#">
+                            <img src="https://picsum.photos/600/300" alt="">
+                            <div class="categories-title">Title</div>
+                        </a>
+                    </div>
+                    <div class="col categories-container">
+                        <a href="#">
+                            <img src="https://picsum.photos/600/300" alt="">
+                            <div class="categories-title">Title</div>
+                        </a>
+                    </div>
+                    <div class="col categories-container">
+                        <a href="#">
+                            <img src="https://picsum.photos/600/300" alt="">
+                            <div class="categories-title">Title</div>
+                        </a>
+                    </div>
+                    <div class="col categories-container">
+                        <a href="#">
+                            <img src="https://picsum.photos/600/300" alt="">
+                            <div class="categories-title">Title</div>
+                        </a>
+                    </div>
+                </div>
+                <!-- <div class="w-100 px-3 clearfix">
+                        <div class="w-33 float-start p-1 categories-container">
+                            <a href="#">
+                                <img src="https://picsum.photos/600/300" alt="">
+                                <div class="categories-title">Title</div>
+                            </a>
+                        </div>
+                        <div class="w-33 float-start p-1 categories-container">
+                            <a href="#">
+                                <img src="https://picsum.photos/600/300" alt="">
+                                <div class="categories-title">Title</div>
+                            </a>
+                        </div>
+                        <div class="w-33 float-start p-1 categories-container">
+                            <a href="#">
+                                <img src="https://picsum.photos/600/300" alt="">
+                                <div class="categories-title">Title</div>
+                            </a>
+                        </div>
+                        <div class="w-33 float-start p-1 categories-container">
+                            <a href="#">
+                                <img src="https://picsum.photos/600/300" alt="">
+                                <div class="categories-title">Title</div>
+                            </a>
+                        </div>
+                        <div class="w-33 float-start p-1 categories-container">
+                            <a href="#">
+                                <img src="https://picsum.photos/600/300" alt="">
+                                <div class="categories-title">Title</div>
+                            </a>
+                        </div>
+                        <div class="w-33 float-start p-1 categories-container">
+                            <a href="#">
+                                <img src="https://picsum.photos/600/300" alt="">
+                                <div class="categories-title">Title</div>
+                            </a>
+                        </div>
+                        <div class="w-33 float-start p-1 categories-container">
+                            <a href="#">
+                                <img src="https://picsum.photos/600/300" alt="">
+                                <div class="categories-title">Title</div>
+                            </a>
+                        </div>
+                        <div class="w-33 float-start p-1 categories-container">
+                            <a href="#">
+                                <img src="https://picsum.photos/600/300" alt="">
+                                <div class="categories-title">Title</div>
+                            </a>
+                        </div>
+                        <div class="w-33 float-start p-1 categories-container">
+                            <a href="#">
+                                <img src="https://picsum.photos/600/300" alt="">
+                                <div class="categories-title">Title</div>
+                            </a>
+                        </div>
+                    </div> -->
+            </section>
+            <section id="top-comments" class="col-12">
+                <div class="section-title">
+                    <h2>
+                        <span>En çok yorum yapılanlar</span>
+                    </h2>
+                </div>
+                <div class="row row-cols-4 g-3">
+                    @foreach (var item in Model.MostHaveComment)
+                    {
+                        <div class="col categories-container ">
+                            <a href="~/@item.Category.CategoryUrl/@item.PostUrl">
+                                <div class="img-box">
+                                    <img src="~/images/post/@item.PostImg">
+                                </div>
+                                <div class="categories-title d-flex justify-content-between align-items-center">
+                                    <span>@item.PostTitle</span>
+                                    <span><small>@item.CommentCount<i class="fa-solid fa-comment ms-2"></i></small></span>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </section>
+            @foreach (var category in Model.HomeCategories)
+            {
+                <section class="col-6">
+                    <div class="section-title">
+                        <h2>
+                            <span>@category.CategoryName</span>
+                        </h2>
+                    </div>
+                    <div class="row row-cols-2 g-3">
+                        @foreach (var post in category.Posts)
+                        {
+                            <div class="col categories-container">
+                                <a href="/@category.CategoryUrl/@post.PostUrl">
+                                    <div class="img-box">
+                                        <img src="~/images/post/@post.PostImg">
+                                    </div>
+                                    <div class="categories-title">@post.PostTitle</div>
+                                </a>
+                            </div>
+                        }
+                        <div class="col offset-3 categories-container text-center">
+                            <a asp-controller="post" asp-action="postlist" asp-route-categoryurl="@category.CategoryUrl"
+                            class="more-btn text-black">Daha Fazla</a>
+                        </div>
+                    </div>
+                </section>
+            }
+
+            @* <section class="col-6">
+                <div class="section-title">
+                <h2>
+                <span>Dizi Replikleri</span>
+                </h2>
+                </div>
+                <div class="row row-cols-2 g-3">
+                <div class="col categories-container">
+                <a href="#">
+                <img src="https://picsum.photos/600/300" alt="">
+                <div class="categories-title">Title</div>
+                </a>
+                </div>
+                <div class="col categories-container">
+                <a href="#">
+                <img src="https://picsum.photos/600/300" alt="">
+                <div class="categories-title">Title</div>
+                </a>
+                </div>
+                <div class="col categories-container">
+                <a href="#">
+                <img src="https://picsum.photos/600/300" alt="">
+                <div class="categories-title">Title</div>
+                </a>
+                </div>
+                <div class="col categories-container">
+                <a href="#">
+                <img src="https://picsum.photos/600/300" alt="">
+                <div class="categories-title">Title</div>
+                </a>
+                </div>
+                <div class="col categories-container text-center">
+                <button class="more-btn">Daha Fazla</button>
+                </div>
+                </div>
+                </section>
+                <section class="col-6">
+                <div class="section-title">
+                <h2>
+                <span>Acıklı Sözler</span>
+                </h2>
+                </div>
+                <div class="row row-cols-2 g-3">
+                <div class="col categories-container">
+                <a href="#">
+                <img src="https://picsum.photos/600/300" alt="">
+                <div class="categories-title">Title</div>
+                </a>
+                </div>
+                <div class="col categories-container">
+                <a href="#">
+                <img src="https://picsum.photos/600/300" alt="">
+                <div class="categories-title">Title</div>
+                </a>
+                </div>
+                <div class="col categories-container">
+                <a href="#">
+                <img src="https://picsum.photos/600/300" alt="">
+                <div class="categories-title">Title</div>
+                </a>
+                </div>
+                <div class="col categories-container">
+                <a href="#">
+                <img src="https://picsum.photos/600/300" alt="">
+                <div class="categories-title">Title</div>
+                </a>
+                </div>
+                <div class="col-12 categories-container text-center">
+                <button class="more-btn">Daha Fazla</button>
+                </div>
+                </div>
+                </section>
+                <section class="col-6">
+                <div class="section-title">
+                <h2>
+                <span>Bayram mesajları</span>
+                </h2>
+                </div>
+                <div class="row row-cols-2 g-3">
+                <div class="col categories-container">
+                <a href="#">
+                <img src="https://picsum.photos/600/300" alt="">
+                <div class="categories-title">Title</div>
+                </a>
+                </div>
+                <div class="col categories-container">
+                <a href="#">
+                <img src="https://picsum.photos/600/300" alt="">
+                <div class="categories-title">Title</div>
+                </a>
+                </div>
+                <div class="col categories-container">
+                <a href="#">
+                <img src="https://picsum.photos/600/300" alt="">
+                <div class="categories-title">Title</div>
+                </a>
+                </div>
+                <div class="col categories-container">
+                <a href="#">
+                <img src="https://picsum.photos/600/300" alt="">
+                <div class="categories-title">Title</div>
+                </a>
+                </div>
+                <div class="col-12 categories-container text-center">
+                <button class="more-btn">Daha Fazla</button>
+                </div>
+                </div>
+                </section> *@
+        </div>
+</div>

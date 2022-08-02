@@ -1,0 +1,36 @@
+.inputfile-box {
+    position: relative;
+  }
+  .inputfile-box label{display: block;}
+  .inputfile {
+    display: none;
+  }
+  
+  .file-box {
+    width: 100%;
+    border: 1px solid #E0E0E0;
+    border-radius: 3px 0 0 3px;
+    cursor: pointer;
+    display: block;
+    padding: 6px;
+    min-height: 38px;
+  }
+  
+  .file-button {
+    background: #2196F3;
+    position: absolute;
+    border: 1px solid #E0E0E0;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+    border-radius: 0 3px 3px 0;
+    padding: 6px 30px;
+  }
+
+.table .thead-success th{
+  background-color: #d4edda;
+}
+
+.table .thead-danger th{
+  background-color: #f8d7da;
+}

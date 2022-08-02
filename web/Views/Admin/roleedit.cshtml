@@ -1,0 +1,92 @@
+@model RoleDetails
+@{
+    Layout = "_LayoutAdmin";
+}
+<div class="col-12">
+    <partial name="_alertV4">
+        <form asp-controller="admin" asp-action="roleedit" method="POST" class="form-horizontal">
+            <input type="hidden" name="RoleId" value="@Model.Role.Id">
+            <input type="hidden" name="RoleName" value="@Model.Role.Name">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Rol düzenle <span
+                            class="d-inline-block p-1 font-weight-bold rounded bg-warning text-black">@Model.Role</span>
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <table class="table">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th colspan="2">Ekle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var nonmember in Model.NonMembers)
+                                    {
+                                        <tr>
+                                            <td>@nonmember.UserName</td>
+                                            <td>
+                                                <div
+                                                class="custom-control custom-switch custom-switch custom-switch-off-danger custom-switch-on-success">
+                                                    <input name="AddRoleIds" type="checkbox" class="custom-control-input"
+                                                    id="customSwitch-@nonmember.Id" value="@nonmember.Id">
+                                                    <label class="custom-control-label"
+                                                    for="customSwitch-@nonmember.Id"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-6">
+                            @if (Model.Members.Count() == 0)
+                            {
+                                <div class="alert alert-info">
+                                    <i class="icon fas fa-info"></i>
+                                    @Model.Role rolüne kayıtlı kullanıcı bulunamadı
+                                </div>
+                            }
+                            else
+                            {
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th colspan="2">Çıkart</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var member in Model.Members)
+                                        {
+                                            <tr>
+                                                <td>@member.UserName</td>
+                                                <td style="width=50px">
+                                                    <div
+                                                class="custom-control custom-switch custom-switch-off-success custom-switch-on-danger">
+                                                        <input name="DeleteRoleIds" type="checkbox" class="custom-control-input"
+                                                    id="customSwitch-@member.Id" value="@member.Id">
+                                                        <label class="custom-control-label"
+                                                    for="customSwitch-@member.Id"></label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-success">Kaydet</button>
+                    <a asp-controller="admin" asp-action="rolelist" class="btn btn-danger">İptal</a>
+                </div>
+            </div>
+        </form>
+</div>
+@section Scripts{
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

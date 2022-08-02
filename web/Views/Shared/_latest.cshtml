@@ -1,0 +1,25 @@
+<div class="section-title px-0">
+    <h2>
+        <span>Son Eklenenler</span>
+    </h2>
+</div>
+<ul class="side-list">
+    @foreach (var post in ViewBag.Latest)
+    {
+        <li class="side-list-item">
+            <a href="/@post.Category.CategoryUrl/@post.PostUrl" class="w-100 clearfix">
+                <div class="side-list-img w-25 float-start">
+                    <img src="~/images/post/@post.PostImg" alt="">
+                </div>
+                <div class="side-list-info w-75 float-start ps-2">
+                    <h2 class="side-list-title">@post.PostTitle</h2>
+                    <p class="side-list-text">
+                        @((post.PostSummary as String).Count()>100?
+                    (post.PostSummary as String).Substring(0,100)+"...":post.PostSummary)
+                    </p>
+                </div>
+            </a>
+        </li>
+    }
+    <a asp-controller="home" asp-action="lastadded" class="more-btn mt-2">Devamını gör</a>
+</ul>

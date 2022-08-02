@@ -1,0 +1,62 @@
+@model List<Category>
+@{
+    Layout = "_LayoutAdmin";
+    ViewData["PageTitle"] = "Kategori listesi";
+}
+<div class="col-12">
+    <partial name="_alertV4">
+        <div class="card">
+            <div class="card-header">
+                <a asp-controller="admin" asp-action="categorycreate" class="btn btn-primary">Ekle</a>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Resim</th>
+                            <th>Kategori ad</th>
+                            <th>Url</th>
+                            <th>Anasayfa</th>
+                            <th colspan="2">#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var category in Model)
+                        {
+                            <tr>
+                                <td>@category.CategoryId</td>
+                                <td style="width: 100px;">
+                                    <img src="~/images/category/@category.CategoryImg" class="img-fluid">
+                                </td>
+                                <td>@category.CategoryName</td>
+                                <td>@category.CategoryUrl</td>
+                                <td>
+                                    @if (category.ShowHome)
+                                    {
+                                        <span class="badge badge-success">Evet</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-danger">Hayır</span>
+                                    }
+                                </td>
+                                <td style="width: 100px;">
+                                    <a asp-controller="admin" asp-action="categoryedit"
+                                    asp-route-categoryid="@category.CategoryId"
+                                    class="btn btn-warning w-100 btn-sm">Düzenle</a>
+                                </td>
+                                <td style="width: 100px;">
+                                    <form asp-controller="admin" asp-action="categorydelete" method="POST">
+                                        <input name="CategoryId" value="@category.CategoryId" type="hidden">
+                                        <button type="submit" class="btn btn-danger btn-sm w-100">Sil</button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</div>

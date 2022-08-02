@@ -1,0 +1,51 @@
+@model PostDetailViewModel
+@{
+    ViewData["Title"] = Model.Post.PostTitle;
+    var Post = Model.Post;
+    var Category = Model.Category;
+}
+
+@section side{
+<section id="latest-categories">
+    @await Html.PartialAsync("_latest")
+</section>
+<section id="popular-categories">
+    @await Html.PartialAsync("_popular")
+</section>
+}
+<div class="col-12 px-0">
+    <h2 class="post-title mt-2">@Post.PostTitle</h2>
+</div>
+<div class="col-12 post-detail border-top border-bottom py-1 px-0 my-3">
+    <span>
+        <i class="fas fa-user"></i>@Post.AddedBy
+    </span>
+    <span>
+        <i class="fas fa-calendar-alt"></i>@Post.PostDate
+    </span>
+    <span>
+        <a asp-controller="post" asp-action="postlist" asp-route-categoryurl="@Category.CategoryUrl">
+            <i class="fas fa-tags"></i>@Category.CategoryName
+        </a>
+    </span>
+</div>
+<div class="col-12 text-center">
+    <img src="~/images/post/@Post.PostImg" alt="">
+</div>
+<div class="col-12">
+    <blockquote>
+        @Post.PostSummary
+    </blockquote>
+</div>
+<div class="col-12">
+    @Html.Raw(Post.PostContent)
+</div>
+<hr class="my-4">
+@section Scripts{
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/js/comment.js"></script>
+<script src="~/js/reply.js"></script>
+<script>
+</script>
+}

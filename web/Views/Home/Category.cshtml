@@ -1,0 +1,27 @@
+@model List<Category>
+@{
+    ViewData["Title"] = "Kategoriler";
+}
+
+<section class="col-12 m-0 text-center p-5">
+    <h1 class="fw-light">Tüm Kategoriler</h1>
+</section>
+<section class="col-12 bg-white py-3">
+    <div class="album">
+        <div class="row row-cols-4 gx-3">
+            @foreach (var category in Model)
+            {
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <a asp-controller="post" asp-action="postlist" asp-route-categoryurl="@category.CategoryUrl">
+                            <img src="~/images/category/@category.CategoryImg" class="card-img-top">
+                            <div class="card-body text-black">
+                                <h6 class="card-title fw-bold m-0">@category.CategoryName</h6>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
